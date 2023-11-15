@@ -12,6 +12,21 @@ use std::str::FromStr;
 
 pub type Result<T, E = Error> = core::result::Result<T, E>;
 
+pub extern "C" fn rust_function() {
+    // ваш код здесь
+    println!("Called rust_function from Rust!");
+    let hash = hash_struct(
+        vec!["id", "addr"],
+        vec!["field", "address"],
+        vec![
+            "123field",
+            "aleo1r3qlsxnuux6rkrhk24rktdtzu7kjr3c2fw5fvtp6a9dwghe0xgzs9c2nhu",
+        ],
+    )
+    .unwrap();
+    println!("{:?}", hash);
+}
+
 pub(crate) fn hash_struct(
     names: Vec<&str>,
     types: Vec<&str>,
